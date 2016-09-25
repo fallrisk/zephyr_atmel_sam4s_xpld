@@ -1,0 +1,14 @@
+
+if BOARD_ATMEL_SAM4S_XPLD
+
+config BOARD
+	default atmel_sam4s_xplained
+
+if I2C
+
+config I2C_ATMEL_SAM3
+	default y
+
+endif # I2C
+
+endif # BOARD_ATMEL_SAM4S_XPLD

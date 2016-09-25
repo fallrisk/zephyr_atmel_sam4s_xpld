@@ -1,0 +1,4 @@
+
+config BOARD_ATMEL_SAM4S_XPLD
+	bool "Atmel SAM4S Xplained"
+	depends on SOC_ATMEL_SAM4S16
