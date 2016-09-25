@@ -26,7 +26,7 @@
 #include "pinmux/pinmux.h"
 
 /**
- * @brief Pinmux driver for Arduino SAM4S Xplained
+ * @brief Pinmux driver for Atmel SAM4S Xplained
  *
  * The SAM4S16 on SAM4S Xplained has 3 PIO controllers. These controllers
  * are responsible for pin muxing, input/output, pull-up, etc.
