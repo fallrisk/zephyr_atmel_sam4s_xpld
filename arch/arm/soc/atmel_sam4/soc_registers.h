@@ -20,8 +20,8 @@
  * Refer to the datasheet for more information about these registers.
  */
 
-#ifndef _ATMEL_SAM3_SOC_REGS_H_
-#define _ATMEL_SAM3_SOC_REGS_H_
+#ifndef _ATMEL_SAM4_SOC_REGS_H_
+#define _ATMEL_SAM4_SOC_REGS_H_
 
 /* Peripheral DMA Controller
  *
@@ -201,7 +201,8 @@ struct __pmc {
 	uint32_t	pcr;	/* 0x10C Peripheral Control         */
 };
 
-/* Supply Controller (SUPC) */
+/* Supply Controller (SUPC)
+ * Table 18-2 Section 18.5.2 Page 339 */
 struct __supc {
 	uint32_t	cr;	/* 0x00 Control                     */
 	uint32_t	smmr;	/* 0x04 Supply Monitor Mode         */
@@ -233,6 +234,13 @@ struct __twi {
 	uint32_t	rev1[50];	/* 0x38-0xFC Reserved       */
 
 	struct __pdc	pdc;	/* 0x100 - 0x124 PDC                */
+};
+
+/* Watchdog timer (WDT) */
+struct __wdt {
+	uint32_t	cr;	/* 0x00 Control Register */
+	uint32_t	mr;	/* 0x04 Mode Register    */
+	uint32_t	sr;	/* 0x08 Status Register  */
 };
 
 #endif /* _ATMEL_SAM3_SOC_REGS_H_ */

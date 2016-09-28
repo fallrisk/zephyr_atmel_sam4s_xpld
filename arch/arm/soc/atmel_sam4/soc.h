@@ -16,13 +16,13 @@
  */
 
 /**
- * @file SoC configuration macros for the Atmel SAM3 family processors.
+ * @file SoC configuration macros for the Atmel SAM4 family processors.
  */
 
-#ifndef _ATMEL_SAM3_SOC_H_
-#define _ATMEL_SAM3_SOC_H_
+#ifndef _ATMEL_SAM4_SOC_H_
+#define _ATMEL_SAM4_SOC_H_
 
-/* IRQ numbers (from section 9.1, Peripheral Identifiers). */
+/* IRQ numbers (from section 11.1, Peripheral Identifiers). */
 #define IRQ_SUPC	0	/* Supply Controller                    */
 #define IRQ_RSTC	1	/* Reset Controller                     */
 #define IRQ_RTC		2	/* Real-time Clock                      */
@@ -31,89 +31,63 @@
 #define IRQ_PMC		5	/* Power Management Controller          */
 #define IRQ_EEFC0	6	/* Enhanced Embedded Flash Controller 0 */
 #define IRQ_EEFC1	7	/* Enhanced Embedded Flash Controller 1 */
-#define IRQ_UART	8	/* UART                                 */
+#define IRQ_UART0	8	/* UART                                 */
+#define IRQ_UART1	9	/* UART                                 */
+#define IRQ_SMC		10	/*                                  */
 #define IRQ_PIOA	11	/* Parallel IO Controller A             */
 #define IRQ_PIOB	12	/* Parallel IO Controller B             */
 #define IRQ_PIOC	13	/* Parallel IO Controller C             */
-#define IRQ_PIOD	14	/* Parallel IO Controller D             */
-#define IRQ_PIOE	15	/* Parallel IO Controller E             */
-#define IRQ_PIOF	16	/* Parallel IO Controller F             */
-#define IRQ_USART0	17	/* USART #0                             */
-#define IRQ_USART1	18	/* USART #1                             */
-#define IRQ_USART2	19	/* USART #2                             */
-#define IRQ_USART3	20	/* USART #3                             */
-#define IRQ_HSMCI	21	/* High Speed Multimedia Card Interface */
-#define IRQ_TWI0	22	/* Two-wire Interface #0                */
-#define IRQ_TWI1	23	/* Two-wire Interface #1                */
-#define IRQ_SPI0	24	/* SPI #0                               */
-#define IRQ_SPI1	25	/* SPI #1                               */
-#define IRQ_SSC		26	/* Synchronous Serial Controller        */
-#define IRQ_TC0		27	/* Timer Counter Channel #0             */
-#define IRQ_TC1		28	/* Timer Counter Channel #1             */
-#define IRQ_TC2		29	/* Timer Counter Channel #2             */
-#define IRQ_TC3		30	/* Timer Counter Channel #3             */
-#define IRQ_TC4		31	/* Timer Counter Channel #4             */
-#define IRQ_TC5		32	/* Timer Counter Channel #5             */
-#define IRQ_TC6		33	/* Timer Counter Channel #6             */
-#define IRQ_TC7		34	/* Timer Counter Channel #7             */
-#define IRQ_TC8		35	/* Timer Counter Channel #8             */
-#define IRQ_PWM		36	/* PWM Controller                       */
-#define IRQ_ADC		37	/* ADC Controller                       */
-#define IRQ_DACC	38	/* DAC Controller                       */
-#define IRQ_DMAC	39	/* DMA Controller                       */
-#define IRQ_UOTGHS	40	/* USB OTG High Speed                   */
-#define IRQ_TRNG	41	/* True Random Number Generator         */
-#define IRQ_EMAC	42	/* Ehternet MAC                         */
-#define IRQ_CAN0	43	/* CAN Controller #0                    */
-#define IRQ_CAN1	44	/* CAN Controller #1                    */
+#define IRQ_USART0	14	/* USART #0                             */
+#define IRQ_USART1	15	/* USART #1                             */
+#define IRQ_HSMCI	18	/* High Speed Multimedia Card Interface */
+#define IRQ_TWI0	19	/* Two-wire Interface #0                */
+#define IRQ_TWI1	20	/* Two-wire Interface #1                */
+#define IRQ_SPI 	21	/* SPI                                  */
+#define IRQ_SSC		22	/* Synchronous Serial Controller        */
+#define IRQ_TC0		23	/* Timer Counter Channel #0             */
+#define IRQ_TC1		24	/* Timer Counter Channel #1             */
+#define IRQ_TC2		25	/* Timer Counter Channel #2             */
+#define IRQ_TC3		26	/* Timer Counter Channel #3             */
+#define IRQ_TC4		27	/* Timer Counter Channel #4             */
+#define IRQ_TC5		28	/* Timer Counter Channel #5             */
+#define IRQ_ADC		29	/* ADC Controller                       */
+#define IRQ_DACC	30	/* DAC Controller                       */
+#define IRQ_PWM		31	/* PWM Controller                       */
+#define IRQ_CRCCU	32	/* CRC Controller                       */
+#define IRQ_ACC		33	/*                    */
+#define IRQ_UDP		34	/* USB Device Port                      */
 
-/* PID: Peripheral IDs (from section 9.1, Peripheral Identifiers).
+/* PID: Peripheral IDs (from section 11.1, Peripheral Identifiers).
  * PMC uses PIDs to enable clock for peripherals.
  */
-#define PID_RTC		2	/* Real-time Clock                      */
-#define PID_RTT		3	/* Real-time Timer                      */
-#define PID_WDG		4	/* Watchdog Timer                       */
-#define PID_PMC		5	/* Power Management Controller          */
-#define PID_EEFC0	6	/* Enhanced Embedded Flash Controller 0 */
-#define PID_EEFC1	7	/* Enhanced Embedded Flash Controller 1 */
-#define PID_UART	8	/* UART                                 */
+#define PID_UART0	8	/* UART                                 */
+#define PID_UART1	9	/* UART                                 */
+#define PID_SMC		10	/*                                 */
 #define PID_PIOA	11	/* Parallel IO Controller A             */
 #define PID_PIOB	12	/* Parallel IO Controller B             */
 #define PID_PIOC	13	/* Parallel IO Controller C             */
-#define PID_PIOD	14	/* Parallel IO Controller D             */
-#define PID_PIOE	15	/* Parallel IO Controller E             */
-#define PID_PIOF	16	/* Parallel IO Controller F             */
-#define PID_USART0	17	/* USART #0                             */
-#define PID_USART1	18	/* USART #1                             */
-#define PID_USART2	19	/* USART #2                             */
-#define PID_USART3	20	/* USART #3                             */
-#define PID_HSMCI	21	/* High Speed Multimedia Card Interface */
-#define PID_TWI0	22	/* Two-wire Interface #0                */
-#define PID_TWI1	23	/* Two-wire Interface #1                */
-#define PID_SPI0	24	/* SPI #0                               */
-#define PID_SPI1	25	/* SPI #1                               */
-#define PID_SSC		26	/* Synchronous Serial Controller        */
-#define PID_TC0		27	/* Timer Counter Channel #0             */
-#define PID_TC1		28	/* Timer Counter Channel #1             */
-#define PID_TC2		29	/* Timer Counter Channel #2             */
-#define PID_TC3		30	/* Timer Counter Channel #3             */
-#define PID_TC4		31	/* Timer Counter Channel #4             */
-#define PID_TC5		32	/* Timer Counter Channel #5             */
-#define PID_TC6		33	/* Timer Counter Channel #6             */
-#define PID_TC7		34	/* Timer Counter Channel #7             */
-#define PID_TC8		35	/* Timer Counter Channel #8             */
-#define PID_PWM		36	/* PWM Controller                       */
-#define PID_ADC		37	/* ADC Controller                       */
-#define PID_DACC	38	/* DAC Controller                       */
-#define PID_DMAC	39	/* DMA Controller                       */
-#define PID_UOTGHS	40	/* USB OTG High Speed                   */
-#define PID_TRNG	41	/* True Random Number Generator         */
-#define PID_EMAC	42	/* Ehternet MAC                         */
-#define PID_CAN0	43	/* CAN Controller #0                    */
-#define PID_CAN1	44	/* CAN Controller #1                    */
+#define PID_USART0	14	/* USART #0                             */
+#define PID_USART1	15	/* USART #1                             */
+#define PID_HSMCI	18	/* High Speed Multimedia Card Interface */
+#define PID_TWI0	19	/* Two-wire Interface #0                */
+#define PID_TWI1	20	/* Two-wire Interface #1                */
+#define PID_SPI 	21	/* SPI                                  */
+#define PID_SSC		22	/* Synchronous Serial Controller        */
+#define PID_TC0		23	/* Timer Counter Channel #0             */
+#define PID_TC1		24	/* Timer Counter Channel #1             */
+#define PID_TC2		25	/* Timer Counter Channel #2             */
+#define PID_TC3		26	/* Timer Counter Channel #3             */
+#define PID_TC4		27	/* Timer Counter Channel #4             */
+#define PID_TC5		28	/* Timer Counter Channel #5             */
+#define PID_ADC		29	/* ADC Controller                       */
+#define PID_DACC	30	/* DAC Controller                       */
+#define PID_PWM		31	/* PWM Controller                       */
+#define PID_CRCCU	32	/*                       */
+#define PID_ACC		33	/* USB OTG High Speed                   */
+#define PID_UDP		34	/* USB Device Port                      */
 
 /* Power Manager Controller */
-#define	PMC_ADDR	0x400E0600
+#define	PMC_ADDR	0x400E0400
 
 #define PMC_CKGR_UCKR_UPLLEN		(1 << 16)
 #define PMC_CKGR_UCKR_UPLLCOUNT		(3 << 20)
@@ -141,9 +115,24 @@
  * the processor clock is at 84 MHz.
  */
 #define PMC_CKGR_PLLAR_MULA	\
-	((CONFIG_SOC_ATMEL_SAM3_PLLA_MULA) << 16)
+	((CONFIG_SOC_ATMEL_SAM4_PLLA_MULA) << 16)
 #define PMC_CKGR_PLLAR_DIVA	\
-	((CONFIG_SOC_ATMEL_SAM3_PLLA_DIVA) << 0)
+	((CONFIG_SOC_ATMEL_SAM4_PLLA_DIVA) << 0)
+
+/*
+ * PLL clock = Main * (MULB + 1) / DIVB
+ *
+ * By default, MULB == 6, DIVB == 1.
+ * With main crystal running at 12 MHz,
+ * PLL = 12 * (6 + 1) / 1 = 84 MHz
+ *
+ * With processor clock prescaler at 1,
+ * the processor clock is at 84 MHz.
+ */
+#define PMC_CKGR_PLLAR_MULB	\
+	((CONFIG_SOC_ATMEL_SAM4_PLLB_MULB) << 16)
+#define PMC_CKGR_PLLAR_DIVB	\
+	((CONFIG_SOC_ATMEL_SAM4_PLLB_DIVB) << 0)
 
 #define PMC_MCKR_CSS_MASK		(0x3)
 #define PMC_MCKR_CSS_SLOW		(0 << 0)
@@ -179,7 +168,8 @@
 #define PMC_INT_FOS			(1 << 20)
 
 /* UART */
-#define UART_ADDR	0x400E0800
+#define UART0_ADDR	0x400E0600
+#define UART1_ADDR	0x400E0800
 
 /* EEFC */
 #define EEFC_BANK0_ADDR	0x400E0A00
@@ -195,12 +185,9 @@
 #define PIOA_ADDR	0x400E0E00
 #define PIOB_ADDR	0x400E1000
 #define PIOC_ADDR	0x400E1200
-#define PIOD_ADDR	0x400E1400
-#define PIOE_ADDR	0x400E1600
-#define PIOF_ADDR	0x400E1800
 
 /* Supply Controller (SUPC) */
-#define SUPC_ADDR	0x400E1A10
+#define SUPC_ADDR	0x400E1410
 
 #define SUPC_CR_KEY	(0xA5 << 24)
 #define SUPC_CR_XTALSEL	(1 << 3)
@@ -208,8 +195,13 @@
 #define SUPC_SR_OSCSEL	(1 << 7)
 
 /* Two-wire Interface (TWI) */
-#define TWI0_ADDR	0x4008C000
-#define TWI1_ADDR	0x40090000
+#define TWI0_ADDR	0x40018000
+#define TWI1_ADDR	0x4001C000
+
+/* Watchdog timer (WDT) */
+#define WDT_ADDR	0x400E1450
+
+#define WDT_DISABLE	(1 << 15)
 
 #ifndef _ASMLANGUAGE
 
@@ -243,6 +235,9 @@
 /* Two-wire Interface (TWI) */
 #define __TWI0		((volatile struct __twi *)TWI0_ADDR)
 #define __TWI1		((volatile struct __twi *)TWI1_ADDR)
+
+/* Watchdog timer (WDT) */
+#define __WDT		((volatile struct __wdt *)WDT_ADDR)
 
 #endif /* !_ASMLANGUAGE */
 

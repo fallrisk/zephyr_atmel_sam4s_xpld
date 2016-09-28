@@ -17,10 +17,10 @@
 
 /**
  * @file
- * @brief System/hardware module for Atmel SAM4 family processor
+ * @brief System/hardware module for Atmel SAM3 family processor
  *
  * This module provides routines to initialize and support board-level hardware
- * for the Atmel SAM4 family processor.
+ * for the Atmel SAM3 family processor.
  */
 
 #include <nanokernel.h>
@@ -42,9 +42,10 @@ static ALWAYS_INLINE void clock_init(void)
 {
 	uint32_t tmp;
 
-#ifdef CONFIG_SOC_ATMEL_SAM3_EXT_SLCK
+#ifdef CONFIG_SOC_ATMEL_SAM4_EXT_SLCK
 	/* This part is to switch the slow clock to using
 	 * the external 32 kHz crystal oscillator.
+	 * SUPC is in section 18.5.3 page 340 for the Control Register.
 	 */
 
 	/* Select external crystal */
@@ -55,7 +56,7 @@ static ALWAYS_INLINE void clock_init(void)
 		;
 #endif /* CONFIG_SOC_ATMEL_SAM3_EXT_SLCK */
 
-#ifdef CONFIG_SOC_ATMEL_SAM3_EXT_MAINCK
+#ifdef CONFIG_SOC_ATMEL_SAM4_EXT_MAINCK
 	/* Start the external main oscillator */
 	__PMC->ckgr_mor = PMC_CKGR_MOR_KEY | PMC_CKGR_MOR_MOSCRCF_4MHZ
 			  | PMC_CKGR_MOR_MOSCRCEN | PMC_CKGR_MOR_MOSCXTEN
@@ -75,7 +76,7 @@ static ALWAYS_INLINE void clock_init(void)
 	/* Wait for main oscillator to be selected */
 	while (!(__PMC->sr & PMC_INT_MOSCSELS))
 		;
-#ifdef CONFIG_SOC_ATMEL_SAM3_WAIT_MODE
+#ifdef CONFIG_SOC_ATMEL_SAM4_WAIT_MODE
 	/*
 	 * Instruct CPU enter Wait mode instead of Sleep mode to
 	 * keep Processor Clock (HCLK) and thus be able to debug
@@ -91,7 +92,7 @@ static ALWAYS_INLINE void clock_init(void)
 	/* Wait for main fast RC oscillator to be stablized */
 	while (!(__PMC->sr & PMC_INT_MOSCRCS))
 		;
-#endif /* CONFIG_SOC_ATMEL_SAM3_EXT_MAINCK */
+#endif /* CONFIG_SOC_ATMEL_SAM4_EXT_MAINCK */
 
 	/* Use PLLA as master clock.
 	 * According to datasheet, PMC_MCKR must not be programmed in
@@ -181,6 +182,9 @@ static int atmel_sam3_init(struct device *arg)
 	/* Setup master clock */
 	clock_init();
 
+	/* Disable watchdog timer, not used by system */
+	__WDT->mr |= WDT_DISABLE;
+
 	/* Install default handler that simply resets the CPU
 	 * if configured in the kernel, NOP otherwise
 	 */
@@ -191,4 +195,4 @@ static int atmel_sam3_init(struct device *arg)
 	return 0;
 }
 
-SYS_INIT(atmel_sam3_init, PRIMARY, 0);
+SYS_INIT(atmel_sam4_init, PRIMARY, 0);
