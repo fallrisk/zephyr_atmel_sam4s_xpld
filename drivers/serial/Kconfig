@@ -49,9 +49,7 @@ config UART_LINE_CTRL
 	help
 	This enables the API for apps to control the serial line,
 	such as baud rate, CTS and RTS.
-
 	Implementation is up to individual driver.
-
 	Says no if not sure.
 
 config UART_DRV_CMD
@@ -60,7 +58,6 @@ config UART_DRV_CMD
 	help
 	This enables the API to send extra commands to drivers.
 	This allows drivers to expose hardware specific functions.
-
 	Says no if not sure.
 
 comment "Serial Drivers"

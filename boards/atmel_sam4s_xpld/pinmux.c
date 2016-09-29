@@ -76,7 +76,6 @@ static void __pinmux_defaults(void)
 	uint32_t output_en[3];	/* output enabled  */
 	uint32_t pull_up[3];	/* pull-up enabled */
 	uint32_t pio_ctrl[3];	/* PIO enable      */
-	uint32_t tmp;
 
 	/* Read defaults at boot, as the bootloader may have already
 	 * configured some pins. The __values come from 
@@ -118,13 +117,13 @@ static void __pinmux_defaults(void)
 	 * Write modifications back to those registers
 	 */
 
-	__PIOA->absr = ab_select[N_PIOA];
-	__PIOB->absr = ab_select[N_PIOB];
-	__PIOC->absr = ab_select[N_PIOC];
+	__PIOA->abcdsr1 = ab_select[N_PIOA];
+	__PIOB->abcdsr1 = ab_select[N_PIOB];
+	__PIOC->abcdsr1 = ab_select[N_PIOC];
 
-	__PIOA->cdsr = cd_select[N_PIOA];
-	__PIOB->cdsr = cd_select[N_PIOB];
-	__PIOC->cdsr = cd_select[N_PIOC];
+	__PIOA->abcdsr2 = cd_select[N_PIOA];
+	__PIOB->abcdsr2 = cd_select[N_PIOB];
+	__PIOC->abcdsr2 = cd_select[N_PIOC];
 
 	/* set output enable */
 	__PIOA->oer = output_en[N_PIOA];

@@ -93,9 +93,10 @@ struct __pio {
 
 	uint32_t	res4;	/* 0x6C reserved                    */
 
-	uint32_t	absr;	/* 0x70 Peripheral AB Select        */
+	uint32_t	abcdsr1; /* 0x70 Peripheral ABCD Select 1   */
+	uint32_t    abcdsr2; /* 0x74 Peripheral ABCD Select 2   */
 
-	uint32_t	res5[3];	/* 0x74-0x7C reserved       */
+	uint32_t	res5[2];	/* 0x78-0x7C reserved       */
 
 	uint32_t	scifsr;	/* 0x80 System Clock Glitch Input   */
 				/*        Filter Select             */

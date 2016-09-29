@@ -143,7 +143,7 @@ static ALWAYS_INLINE void clock_init(void)
  *
  * @return 0
  */
-static int atmel_sam3_init(struct device *arg)
+static int atmel_sam4_init(struct device *arg)
 {
 	uint32_t key;
 
