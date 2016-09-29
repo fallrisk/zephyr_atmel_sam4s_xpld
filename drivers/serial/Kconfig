@@ -75,6 +75,8 @@ source "drivers/serial/Kconfig.nsim"
 
 source "drivers/serial/Kconfig.atmel_sam3"
 
+source "drivers/serial/Kconfig.atmel_sam4"
+
 source "drivers/serial/Kconfig.qmsi"
 
 source "drivers/serial/Kconfig.stm32"
