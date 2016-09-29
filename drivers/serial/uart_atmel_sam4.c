@@ -171,7 +171,7 @@ static int uart_sam4_init(struct device *dev)
 	volatile struct _uart *uart = UART_STRUCT(dev);
 
 	/* Enable UART clock in PMC */
-	__PMC->pcer0 = (1 << PID_UART);
+	__PMC->pcer0 = (1 << PID_UART1);
 
 	/* Detach pins PA8 and PA9 from PIO controller */
 	__PIOA->pdr = (1 << 8) | (1 << 9);
