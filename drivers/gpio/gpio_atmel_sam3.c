@@ -372,7 +372,7 @@ void gpio_sam3_config_c(struct device *dev)
 		    gpio_sam3_isr, DEVICE_GET(gpio_sam3_c), 0);
 	irq_enable(IRQ_PIOC);
 }
-#endif /* CONFIG_GPIO_ATMEL_SAM3_PORTA */
+#endif /* CONFIG_GPIO_ATMEL_SAM3_PORTC */
 
 /* Port D */
 #ifdef CONFIG_GPIO_ATMEL_SAM3_PORTD
