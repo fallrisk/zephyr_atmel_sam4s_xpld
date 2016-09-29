@@ -78,7 +78,7 @@ static void __pinmux_defaults(void)
 	uint32_t pio_ctrl[3];	/* PIO enable      */
 
 	/* Read defaults at boot, as the bootloader may have already
-	 * configured some pins. The __values come from 
+	 * configured some pins. The __values come from
 	 */
 	ab_select[N_PIOA] = __PIOA->abcdsr1;
 	ab_select[N_PIOB] = __PIOB->abcdsr1;
@@ -109,7 +109,7 @@ static void __pinmux_defaults(void)
 	 * PB2 (RX)
 	 * PB3 (TX)
 	 */
-	pio_ctrl[N_PIOB] &= ~(BIT(2) | BIT(3));
+	pio_ctrl[N_PIOB] |= (BIT(2) | BIT(3);
 	ab_select[N_PIOB] &= ~(BIT(2) | BIT(3));
 	cd_select[N_PIOB] &= ~(BIT(2) | BIT(3));
 
