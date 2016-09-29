@@ -243,21 +243,21 @@ static unsigned char uart_sam4_poll_out(struct device *dev,
 	return c;
 }
 
-static struct uart_driver_api uart_SAM4_driver_api = {
-	.poll_in = uart_SAM4_poll_in,
-	.poll_out = uart_SAM4_poll_out,
+static struct uart_driver_api uart_sam4_driver_api = {
+	.poll_in = uart_sam4_poll_in,
+	.poll_out = uart_sam4_poll_out,
 };
 
-static struct uart_device_config uart_SAM4_dev_cfg_0 = {
-	.base = (uint8_t *)UART0_ADDR,
+static struct uart_device_config uart_sam4_dev_cfg_0 = {
+	.base = (uint8_t *)UART1_ADDR,
 	.sys_clk_freq = CONFIG_UART_ATMEL_SAM4_CLK_FREQ,
 };
 
-static struct uart_SAM4_dev_data_t uart_SAM4_dev_data_0 = {
+static struct uart_sam4_dev_data_t uart_SAM4_dev_data_0 = {
 	.baud_rate = CONFIG_UART_ATMEL_SAM4_BAUD_RATE,
 };
 
-DEVICE_AND_API_INIT(uart_SAM4_0, CONFIG_UART_ATMEL_SAM4_NAME, &uart_sam4_init,
+DEVICE_AND_API_INIT(uart_sam4_0, CONFIG_UART_ATMEL_SAM4_NAME, &uart_sam4_init,
 		    &uart_sam4_dev_data_0, &uart_sam4_dev_cfg_0,
 		    PRIMARY, CONFIG_KERNEL_INIT_PRIORITY_DEVICE,
 		    &uart_sam4_driver_api);
