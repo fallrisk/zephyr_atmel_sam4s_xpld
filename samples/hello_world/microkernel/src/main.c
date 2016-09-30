@@ -26,5 +26,7 @@
 
 void main(void)
 {
-	PRINT("Hello World! %s\n", CONFIG_ARCH);
+	while (1) {
+		PRINT("Hello World! %s\n", CONFIG_ARCH);
+	}
 }
