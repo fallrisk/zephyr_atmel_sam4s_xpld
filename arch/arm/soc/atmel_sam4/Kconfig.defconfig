@@ -54,7 +54,8 @@ config SRAM_BASE_ADDRESS
 	default 0x20100000 if SOC_ATMEL_SAM4S16
 
 #
-# Atmel SAM4 family has flash starting @ 0x00080000.
+# Atmel SAM4 family has flash starting @ 0x00400000.
+# Flash Sector Organization Figure 8-2, Page 41
 #
 # SAM4S16 has 1024K of flash.
 #
