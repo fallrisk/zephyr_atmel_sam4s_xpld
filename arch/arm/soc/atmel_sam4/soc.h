@@ -225,9 +225,6 @@
 #define __PIOA		((volatile struct __pio *)PIOA_ADDR)
 #define __PIOB		((volatile struct __pio *)PIOB_ADDR)
 #define __PIOC		((volatile struct __pio *)PIOC_ADDR)
-#define __PIOD		((volatile struct __pio *)PIOD_ADDR)
-#define __PIOE		((volatile struct __pio *)PIOE_ADDR)
-#define __PIOF		((volatile struct __pio *)PIOF_ADDR)
 
 /* Supply Controller Register struct */
 #define __SUPC		((volatile struct __supc *)SUPC_ADDR)
