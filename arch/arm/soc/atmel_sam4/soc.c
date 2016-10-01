@@ -192,6 +192,26 @@ static int atmel_sam4_init(struct device *arg)
 
 	irq_unlock(key);
 
+	/* Add the pins to the PIO so we can use them as GPIO. */
+	uint32_t disable_register;
+	disable_register = __PIOC->psr;
+	disable_register |= (BIT(10) + BIT(17));
+	__PIOC->per = disable_register;
+
+	/* Set both pins to output. Section 31.5.4 */
+	uint32_t output;
+	output = __PIOC->osr;
+	__PIOC->oer = output | (BIT(10) | BIT(17));
+
+	/* Now set the pins, one to high and the other to low. */
+	uint32_t level;
+	level = __PIOC->odsr;
+	/* level |= (BIT(10)); */
+	level &= ~(BIT(10) | BIT(17));
+	__PIOC->sodr = level;
+
+	
+
 	return 0;
 }
 

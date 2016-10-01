@@ -142,7 +142,7 @@ static void baudrate_set(struct device *dev,
 {
 	volatile struct _uart *uart = UART_STRUCT(dev);
 	struct uart_device_config * const dev_cfg = DEV_CFG(dev);
-	struct uart_SAM4_dev_data_t * const dev_data = DEV_DATA(dev);
+	struct uart_sam4_dev_data_t * const dev_data = DEV_DATA(dev);
 	uint32_t divisor; /* baud rate divisor */
 
 	if ((baudrate != 0) && (dev_cfg->sys_clk_freq != 0)) {
@@ -171,12 +171,14 @@ static int uart_sam4_init(struct device *dev)
 	volatile struct _uart *uart = UART_STRUCT(dev);
 
 	/* Enable UART clock in PMC */
-	__PMC->pcer0 = (1 << PID_UART1);
+	__PMC->pcer0 = (BIT(9) | BIT(8));
 
 	/* Detach pins PB2 and PB3 from PIO controller
 	 * PB2 is the URXD1 and PB3 is the UTXD1.
 	 */
-	__PIOB->pdr = (1 << 2) | (1 << 3);
+	__PIOB->pdr = (BIT(2)) | (BIT(3));
+	__PIOB->abcdsr1 = 0;
+	__PIOB->abcdsr2 = 0;
 
 	/* Disable PDC (DMA) */
 	uart->pdc_ptcr = UART_PDC_PTCR_RXTDIS | UART_PDC_PTCR_TXTDIS;
@@ -255,7 +257,7 @@ static struct uart_device_config uart_sam4_dev_cfg_0 = {
 	.sys_clk_freq = CONFIG_UART_ATMEL_SAM4_CLK_FREQ,
 };
 
-static struct uart_sam4_dev_data_t uart_SAM4_dev_data_0 = {
+static struct uart_sam4_dev_data_t uart_sam4_dev_data_0 = {
 	.baud_rate = CONFIG_UART_ATMEL_SAM4_BAUD_RATE,
 };
 

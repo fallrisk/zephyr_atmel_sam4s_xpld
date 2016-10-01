@@ -29,7 +29,7 @@ static const char *banner2 = "Character read:\n";
 #define UART_DEVICE "UART_0"
 #else
 /* For any other board not specified above, we use UART_0 by default. */
-#define UART_DEVICE "UART_0"
+#define UART_DEVICE "UART_1"
 #endif
 
 static volatile bool data_transmitted;

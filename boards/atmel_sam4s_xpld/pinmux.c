@@ -135,11 +135,6 @@ static void __pinmux_defaults(void)
 	__PIOB->odr = ~(output_en[N_PIOB]);
 	__PIOC->odr = ~(output_en[N_PIOC]);
 
-	/* set PIO enable */
-	__PIOA->per = pio_ctrl[N_PIOA];
-	__PIOB->per = pio_ctrl[N_PIOB];
-	__PIOC->per = pio_ctrl[N_PIOC];
-
 	/* set PIO disable */
 	__PIOA->pdr = ~(pio_ctrl[N_PIOA]);
 	__PIOB->pdr = ~(pio_ctrl[N_PIOB]);
@@ -154,6 +149,8 @@ static void __pinmux_defaults(void)
 	__PIOA->pudr = ~(pull_up[N_PIOA]);
 	__PIOB->pudr = ~(pull_up[N_PIOB]);
 	__PIOC->pudr = ~(pull_up[N_PIOC]);
+
+	__PIOB->pdr = (BIT(2) | BIT(3));
 }
 
 static int pinmux_init(struct device *port)

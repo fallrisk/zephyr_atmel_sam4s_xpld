@@ -131,6 +131,10 @@
 #define GPIO_OUT_PIN	25
 #define GPIO_INT_PIN	27
 #define GPIO_NAME	"GPIO_"
+#elif defined(CONFIG_SOC_ATMEL_SAM4)
+#define GPIO_OUT_PIN	10 + 63
+#define GPIO_INT_PIN	17 + 63
+#define GPIO_NAME	"GPIO_"
 #elif defined(CONFIG_SOC_QUARK_D2000)
 #define GPIO_OUT_PIN	8
 #define GPIO_INT_PIN	24
