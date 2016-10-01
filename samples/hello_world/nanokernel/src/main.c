@@ -34,9 +34,6 @@
 
 void main(void)
 {
-	uint32_t *uart_thr;
-	uart_thr = 0x400E081C;
-	*uart_thr = 'A';
 	PRINT("Hello World! %s\n", CONFIG_ARCH);
 }
 

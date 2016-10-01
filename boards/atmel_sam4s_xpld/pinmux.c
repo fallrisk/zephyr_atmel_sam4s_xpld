@@ -149,8 +149,6 @@ static void __pinmux_defaults(void)
 	__PIOA->pudr = ~(pull_up[N_PIOA]);
 	__PIOB->pudr = ~(pull_up[N_PIOB]);
 	__PIOC->pudr = ~(pull_up[N_PIOC]);
-
-	__PIOB->pdr = (BIT(2) | BIT(3));
 }
 
 static int pinmux_init(struct device *port)

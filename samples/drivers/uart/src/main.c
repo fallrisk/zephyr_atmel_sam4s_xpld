@@ -27,9 +27,11 @@ static const char *banner2 = "Character read:\n";
 #define UART_DEVICE "UART_1"
 #elif CONFIG_BOARD_QUARK_D2000_CRB
 #define UART_DEVICE "UART_0"
+#elif CONFIG_BOARD_ATMEL_SAM4S_XPLD
+#define UART_DEVICE "UART_1"
 #else
 /* For any other board not specified above, we use UART_0 by default. */
-#define UART_DEVICE "UART_1"
+#define UART_DEVICE "UART_0"
 #endif
 
 static volatile bool data_transmitted;

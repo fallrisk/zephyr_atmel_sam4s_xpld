@@ -26,7 +26,7 @@ config UART_ATMEL_SAM4_IRQ_PRI
 
 config UART_ATMEL_SAM4_BAUD_RATE
 	int "Atmel SAM4 UART Baud Rate"
-	default 115200
+	default 0
 	depends on UART_ATMEL_SAM4
 	help
 	  The baud rate for UART port to be set to at boot.
