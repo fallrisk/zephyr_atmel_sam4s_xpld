@@ -171,14 +171,14 @@ static int uart_sam4_init(struct device *dev)
 	volatile struct _uart *uart = UART_STRUCT(dev);
 
 	/* Enable UART clock in PMC */
-	__PMC->pcer0 = (BIT(9) | BIT(8));
+	__PMC->pcer0 = BIT(9);
 
 	/* Detach pins PB2 and PB3 from PIO controller
 	 * PB2 is the URXD1 and PB3 is the UTXD1.
 	 */
 	__PIOB->pdr = (BIT(2)) | (BIT(3));
-	__PIOB->abcdsr1 = 0;
-	__PIOB->abcdsr2 = 0;
+	__PIOB->abcdsr1 &= (BIT(2) | BIT(3));
+	__PIOB->abcdsr2 &= (BIT(2) | BIT(3));
 
 	/* Disable PDC (DMA) */
 	uart->pdc_ptcr = UART_PDC_PTCR_RXTDIS | UART_PDC_PTCR_TXTDIS;
