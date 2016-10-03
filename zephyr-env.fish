@@ -1,3 +1,4 @@
+#!/usr/bin/fish
 #
 # Copyright (c) 2015 Wind River Systems, Inc.
 #
@@ -14,21 +15,24 @@
 # limitations under the License.
 #
 
-# if "/usr/bin/fish" != $SHELL
-# 	echo "This script is only for the fish shell."
-# 	exit 1
-# end
+# Check that we are running this script with the fish shell.
+if test -z $FISH_VERSION
+	echo "This script is only for the fish shell."
+	exit 1
+end
 
-# Get the directory the script is stored in.
-# echo "status is "(status -f)
-# set DIR (cd (dirname (status -f)); or pwd)
-set DIR (pwd)
+# Save the current directory so we can jump back to it after getting this
+# script's directory to store in the variable ZEPHYR_BASE.
+set current_dir (pwd)
+
 # Test if this file was sourced or executed.
+if test "$_" != source
+  echo "Source this file (do NOT execute it!) to set the Zephyr Kernel environment."
+  exit 1
+end
 
 # Identify OS source tree root directory
-# set --export ZEPHYR_BASE (builtin (cd (dirname $DIR))
-set --export ZEPHYR_BASE $DIR
-# echo $ZEPHYR_BASE
+set --export ZEPHYR_BASE (cd (dirname (status -f)); and pwd)
 
 set scripts_path $ZEPHYR_BASE/scripts
 echo "$PATH" | grep -q "$scripts_path"
@@ -50,3 +54,5 @@ if test -f $zephyr_answer_file
 	./$zephyr_answer_file
 end
 set --erase zephyr_answer_file 
+
+cd $current_dir
